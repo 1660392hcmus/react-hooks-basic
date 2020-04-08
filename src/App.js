@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.scss";
 import ColorBox from "./components/ColorBox";
 import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -10,8 +11,19 @@ function App() {
     { id: 3, title: "todo threeeeee" }
   ]);
 
+  function handleTodoFormSubmit(formValue) {
+    console.log(formValue);
+    const newTodo = {
+      id: todoList.length + 1,
+      ...formValue
+    };
+    const newTodoList = [...todoList];
+    newTodoList.push(newTodo);
+    setTodoList(newTodoList);
+  }
+
   function handleTodoClick(todo) {
-    console.log(todo.id);
+    console.log(todo);
     const index = todoList.findIndex(x => x.id === todo.id);
     if (index < 0) return;
     const newTodoList = [...todoList];
@@ -24,6 +36,7 @@ function App() {
       <h1>hello</h1>
       <ColorBox />
       <TodoList todos={todoList} onTodoClick={handleTodoClick}></TodoList>
+      <TodoForm onSubmit={handleTodoFormSubmit}></TodoForm>
     </div>
   );
 }
