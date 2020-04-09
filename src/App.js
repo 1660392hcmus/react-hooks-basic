@@ -10,6 +10,7 @@ import { filter } from "minimatch";
 
 function App() {
   const [todoList, setTodoList] = useState([
+    //state todolist khởi tạo
     { id: 1, title: "todo oneeeeeee" },
     { id: 2, title: "todo twooooooo" },
     { id: 3, title: "todo threeeeee" }
@@ -83,9 +84,10 @@ function App() {
     <div className="app">
       <h1>hello</h1>
       <ColorBox />
-      <TodoList todos={todoList} onTodoClick={handleTodoClick}></TodoList>
-      <TodoForm onSubmit={handleTodoFormSubmit}></TodoForm>
-
+      <TodoList todos={todoList} onTodoClick={handleTodoClick}></TodoList>{" "}
+      {/*todos={todoList} => render ra todolist // onTodoClick={handleTodoClick} => truyền 1 todo để xử lý remove với props là onTodoClick */}
+      <TodoForm onSubmit={handleTodoFormSubmit}></TodoForm>{" "}
+      {/*onSubmit với giá trị truyền vào từ component con là formValue từ function handleSubmit*/}
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
     </div>
