@@ -1,5 +1,4 @@
 import React, { useState } from "react"; //rsfp Creates a stateless React component as a named function with PropTypes (Reactjs code snippets)
-import PropTypes from "prop-types";
 import "./ColorBox.scss";
 
 ColorBox.propTypes = {};
