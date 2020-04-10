@@ -11,17 +11,6 @@ TodoForm.defaultProps = {
 
 function TodoForm(props) {
   //hàm component chính
-  //   const [todo, setTodo] = useState("");
-
-  //   const handleChange = event => {
-  //     setTodo(event.target.value);
-  //   };
-
-  //   const handleSubmit = event => {
-  //     event.preventDefault();
-  //     console.log(todo);
-  //     setTodo("");
-  //   };
 
   const { onSubmit } = props; //khai báo props xài trong component
   const [value, setValue] = useState(""); //value của ô input, ở đây khởi tạo giá trị ban đầu là rỗng

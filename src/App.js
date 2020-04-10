@@ -7,6 +7,7 @@ import PostList from "./components/PostList";
 import Pagination from "./components/Pagination";
 import queryString from "query-string";
 import { filter } from "minimatch";
+import PostFiltersForm from "./components/PostFiltersForm";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -26,11 +27,15 @@ function App() {
 
   const [filters, setFilters] = useState({
     _limit: 10,
-    _page: 1
+    _page: 1,
+    title_like: "" //search field by title by like ...
   });
 
   useEffect(() => {
     async function fetchPostList() {
+      // {
+      //   /*ham async dc su dung khi lay data */
+      // }
       try {
         //_limit=10&_page=3
         const paramsString = queryString.stringify(filters); //object => string
@@ -44,7 +49,7 @@ function App() {
         setPostList(data);
         setPagination(pagination);
       } catch (error) {
-        console.log("Fail to fetch post list: ", error.message);
+        console.log("Fail to fetc h post list: ", error.message);
       }
     }
 
@@ -80,6 +85,15 @@ function App() {
     });
   }
 
+  function handleFilterChange(newFilters) {
+    console.log("New filters:", newFilters);
+    setFilters({
+      ...filter,
+      _page: 1,
+      title_like: newFilters.searchTerm
+    });
+  }
+
   return (
     <div className="app">
       <h1>hello</h1>
@@ -88,6 +102,7 @@ function App() {
       {/*todos={todoList} => render ra todolist // onTodoClick={handleTodoClick} => truyền 1 todo để xử lý remove với props là onTodoClick */}
       <TodoForm onSubmit={handleTodoFormSubmit}></TodoForm>{" "}
       {/*onSubmit với giá trị truyền vào từ component con là formValue từ function handleSubmit*/}
+      <PostFiltersForm onSubmit={handleFilterChange}></PostFiltersForm>
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
     </div>
