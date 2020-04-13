@@ -9,6 +9,7 @@ import queryString from "query-string";
 import { filter } from "minimatch";
 import PostFiltersForm from "./components/PostFiltersForm";
 import Clock from "./components/Clock";
+import BetterClock from "./components/BetterClock";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -111,6 +112,7 @@ function App() {
       {showClock && <Clock />}
       <button onClick={() => setShowClock(false)}>hide Clock</button>
       <button onClick={() => setShowClock(true)}>show Clock</button>
+      <BetterClock />
     </div>
   );
 }
