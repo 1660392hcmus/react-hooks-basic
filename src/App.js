@@ -8,6 +8,7 @@ import Pagination from "./components/Pagination";
 import queryString from "query-string";
 import { filter } from "minimatch";
 import PostFiltersForm from "./components/PostFiltersForm";
+import Clock from "./components/Clock";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -94,6 +95,8 @@ function App() {
     });
   }
 
+  const [showClock, setShowClock] = useState(true);
+
   return (
     <div className="app">
       <h1>hello</h1>
@@ -105,6 +108,9 @@ function App() {
       <PostFiltersForm onSubmit={handleFilterChange}></PostFiltersForm>
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
+      {showClock && <Clock />}
+      <button onClick={() => setShowClock(false)}>hide Clock</button>
+      <button onClick={() => setShowClock(true)}>show Clock</button>
     </div>
   );
 }
