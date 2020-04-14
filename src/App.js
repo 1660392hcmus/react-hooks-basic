@@ -10,6 +10,7 @@ import { filter } from "minimatch";
 import PostFiltersForm from "./components/PostFiltersForm";
 import Clock from "./components/Clock";
 import BetterClock from "./components/BetterClock";
+import MagicBox from "./components/MagicBox";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -113,6 +114,7 @@ function App() {
       <button onClick={() => setShowClock(false)}>hide Clock</button>
       <button onClick={() => setShowClock(true)}>show Clock</button>
       <BetterClock />
+      <MagicBox />
     </div>
   );
 }
